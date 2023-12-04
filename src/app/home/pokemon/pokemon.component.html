@@ -1,3 +1,9 @@
-<div class="" *ngFor="let pokemon of pokemons">
-    <p>{{ pokemon.name }}</p>
+<h1>Header of poe</h1>
+
+<div class="pokemon-container">
+    <div class="card" *ngFor="let pokemon of pokemons">
+        <p>{{ pokemon.name }}</p>
+        <p>{{ pokemon.id }}</p>
+        <img src="{{pokemon.img}}" alt="">
+    </div>
 </div>

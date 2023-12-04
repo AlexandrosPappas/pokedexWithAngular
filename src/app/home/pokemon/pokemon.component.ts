@@ -12,7 +12,7 @@ export class PokemonComponent implements OnInit {
   constructor(private http: HttpClient) {}
   ngOnInit(): void {
     this.fetchPokemonNumber();
-    console.log(this.pokemons);
+    //console.log(this.pokemons);
   }
   fetchPokemonNumber() {
     this.http
@@ -29,14 +29,13 @@ export class PokemonComponent implements OnInit {
             .get(`https://pokeapi.co/api/v2/pokemon/${i}`)
             .subscribe((pokemon: any) => {
               const pokemonObj: object = {
-                pokemonId: pokemon.id,
-                pokemonName: pokemon.name,
-                pokmeonImg: pokemon.sprites.back_default,
-                poemonWeight: pokemon.weight,
-                pokemonType: pokemon.types,
+                id: pokemon.id,
+                name: pokemon.name,
+                img: pokemon.sprites.front_default,
+                weight: pokemon.weight,
+                type: pokemon.types,
               };
-              //this.pokemons.push(pokemonObj);
-              //console.log(pokemonObj);
+              this.pokemons.push(pokemonObj);
             });
         }
       });
