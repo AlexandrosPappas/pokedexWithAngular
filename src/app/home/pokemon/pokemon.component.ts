@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { count, map } from 'rxjs';
+import { LoaderService } from 'src/app/loader.service';
 
 @Component({
   selector: 'app-pokemon',
@@ -9,8 +10,9 @@ import { count, map } from 'rxjs';
 })
 export class PokemonComponent implements OnInit {
   pokemons: any = [];
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private loaderService: LoaderService) {}
   ngOnInit(): void {
+    this.loaderService.show();
     this.fetchPokemonNumber();
     //console.log(this.pokemons);
   }
@@ -24,7 +26,7 @@ export class PokemonComponent implements OnInit {
         })
       )
       .subscribe((count) => {
-        for (let i = 0; i <= count; i++) {
+        for (let i = 1; i <= count; i++) {
           this.http
             .get(`https://pokeapi.co/api/v2/pokemon/${i}`)
             .subscribe((pokemon: any) => {
@@ -38,6 +40,10 @@ export class PokemonComponent implements OnInit {
               this.pokemons.push(pokemonObj);
             });
         }
+        setTimeout(() => {
+          this.loaderService.hide();
+        }, 1000);
+        // this.loaderService.hide();
       });
   }
 }
