@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component, OnInit } from '@angular/core';
 import { count, map } from 'rxjs';
 import { LoaderService } from 'src/app/loader.service';
 
@@ -42,8 +42,8 @@ export class PokemonComponent implements OnInit {
         }
         setTimeout(() => {
           this.loaderService.hide();
-        }, 1000);
-        // this.loaderService.hide();
+        }, 500);
+        //this.loaderService.hide();
       });
   }
 }
