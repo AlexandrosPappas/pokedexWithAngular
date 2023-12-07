@@ -6,7 +6,7 @@
         </div>
         <div class="card-body">
             <span>ID: {{ pokemon.id }}</span>
-            <span>Name: {{ pokemon.name }}</span>
+            <span>Name: {{ pokemon.name | titlecase }}</span>
             <span>Weight:{{ pokemon.weight }} Lb</span>
         </div>  
     </div>
