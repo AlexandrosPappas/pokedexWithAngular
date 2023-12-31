@@ -1,0 +1,23 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    background-color: #E3350D;
+}
+.logo img{
+    width: 150px;
+}
+nav {
+    display: flex;
+    gap: .5rem;
+}
+nav a:link, nav a:visited{
+    color: #fff;
+    text-decoration: none;
+    transition: 0.5s;
+}
+nav a:hover{
+    color: rgb(64, 64, 238);
+}
