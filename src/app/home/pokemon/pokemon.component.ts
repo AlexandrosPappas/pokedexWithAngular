@@ -35,7 +35,7 @@ export class PokemonComponent implements OnInit {
                 id: pokemon.id,
                 name: pokemon.name,
                 img: pokemon.sprites.front_default,
-                weight: pokemon.weight,
+                weight: pokemon.weight * 0.1,
                 type: pokemon.types,
               };
               this.pokemons.push(pokemonObj);
