@@ -11,12 +11,15 @@ import { LoaderService } from 'src/app/loader.service';
 })
 export class PokemonComponent implements OnInit {
   pokemons: any = [];
+
   constructor(private http: HttpClient, private loaderService: LoaderService) {}
+
   ngOnInit(): void {
     this.loaderService.show();
     this.fetchPokemonNumber();
     //console.log(this.pokemons);
   }
+
   fetchPokemonNumber() {
     this.http
       .get(`https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0`)

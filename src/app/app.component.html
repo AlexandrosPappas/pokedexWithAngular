@@ -3,8 +3,8 @@
     <img src="/assets/pokemon-logo.png" alt="This is the logo the pokemon franchise">
   </div>
   <nav>
-    <a routerLink="/" >Home</a>
-    <a routerLink="/About" >About</a>
+    <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/" >Home</a>
+    <a routerLinkActive="active" routerLink="/About" >About</a>
   </nav>
 </header>
 <main>
