@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { NgOptimizedImage } from '@angular/common';
+import { NgOptimizedImage, TitleCasePipe } from '@angular/common';
 import { AfterContentInit, Component, OnInit } from '@angular/core';
 import { count, map } from 'rxjs';
 import { LoaderService } from 'src/app/loader.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon',
@@ -12,7 +13,11 @@ import { LoaderService } from 'src/app/loader.service';
 export class PokemonComponent implements OnInit {
   pokemons: any = [];
 
-  constructor(private http: HttpClient, private loaderService: LoaderService) {}
+  constructor(
+    private http: HttpClient,
+    private loaderService: LoaderService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loaderService.show();
@@ -48,5 +53,9 @@ export class PokemonComponent implements OnInit {
           this.loaderService.hide();
         }, 700);
       });
+  }
+
+  onPokemonSelect(pokemonName: string) {
+    this.router.navigate(['/Pokemon/', pokemonName]);
   }
 }
