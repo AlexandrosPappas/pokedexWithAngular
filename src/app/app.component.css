@@ -4,7 +4,6 @@ header{
     padding: 1rem 2rem;
     position: sticky;
     top: 0;
-    background-color: #cc322a;
 }
 .logo img{
     width: 150px;
@@ -15,7 +14,7 @@ nav {
     gap: .5rem;
 }
 nav a:link, nav a:visited{
-    color: #fff;
+    color: #0a2738;
     text-decoration: none;
     transition: 0.5s;
 }
@@ -23,5 +22,5 @@ nav a:hover{
     color: rgb(64, 64, 238);
 }
 main{
-    background-color: #a7b9d3;
+    /* background-color: #a7b9d3; */
 }

@@ -10,12 +10,11 @@ const routes: Routes = [
   {
     path: 'Pokemon',
     component: PokemonComponent,
-    children: [
-      {
-        path: ':name',
-        component: PokemonItemComponent,
-      },
-    ],
+    children: [],
+  },
+  {
+    path: 'Pokemon/:name',
+    component: PokemonItemComponent,
   },
   { path: 'About', component: AboutComponent },
 ];
