@@ -4,3 +4,19 @@
     align-items: center;
     height: calc(100vh - 97.7px);
 }
+.pokedex-link{
+    color: #0a2738;
+    text-decoration: none;
+    animation: pokedex-link 2s infinite;
+}
+@keyframes pokedex-link{
+ 0%{
+    transform: scale(1);
+ }
+ 50%{
+    transform: scale(1.5);
+ }
+ 100%{
+    transform: scale(1);
+ }
+}

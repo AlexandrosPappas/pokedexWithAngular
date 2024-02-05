@@ -1,7 +1,7 @@
 <div class="pokemon-container">
     <div class="card" *ngFor="let pokemon of pokemons" (click)="onPokemonSelect(pokemon.name)">
         <div class="card-head">
-            <img src="{{pokemon.img}}" alt="pokemon">
+            <img src="{{pokemon.img}}" alt="pokemon {{pokemon.name}}">
         </div>
         <div class="card-body">
             <span>ID: {{ pokemon.id }}</span>
