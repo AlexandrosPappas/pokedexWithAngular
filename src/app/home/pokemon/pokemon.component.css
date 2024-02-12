@@ -10,6 +10,7 @@
     width: -webkit-fill-available;  
     width: -moz-available;
     max-width: 300px;
+    cursor: pointer;
 }
 .card-head{
     text-align: center;

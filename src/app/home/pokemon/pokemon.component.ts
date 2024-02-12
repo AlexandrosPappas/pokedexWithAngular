@@ -22,6 +22,7 @@ export class PokemonComponent implements OnInit {
   ngOnInit(): void {
     this.loaderService.show();
     this.fetchPokemonNumber();
+    this.loaderService.hide();
     //console.log(this.pokemons);
   }
 
@@ -49,9 +50,9 @@ export class PokemonComponent implements OnInit {
               this.pokemons.push(pokemonObj);
             });
         }
-        setTimeout(() => {
-          this.loaderService.hide();
-        }, 700);
+        // setTimeout(() => {
+        //   this.loaderService.hide();
+        // }, 700);
       });
   }
 

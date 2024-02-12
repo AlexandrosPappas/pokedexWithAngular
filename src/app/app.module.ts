@@ -9,6 +9,7 @@ import { PokemonComponent } from './home/pokemon/pokemon.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoaderComponent } from './loader/loader.component';
 import { PokemonItemComponent } from './home/pokemon/pokemon-item/pokemon-item.component';
+import { LazyLoadingDirective } from './lazy-loading.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +18,7 @@ import { PokemonItemComponent } from './home/pokemon/pokemon-item/pokemon-item.c
     PokemonComponent,
     LoaderComponent,
     PokemonItemComponent,
+    LazyLoadingDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
