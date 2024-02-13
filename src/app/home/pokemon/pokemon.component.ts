@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { NgOptimizedImage, TitleCasePipe } from '@angular/common';
-import { AfterContentInit, Component, OnInit } from '@angular/core';
-import { count, map } from 'rxjs';
+import { AfterContentInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription, count, map } from 'rxjs';
 import { LoaderService } from 'src/app/loader.service';
 import { Router } from '@angular/router';
 
@@ -10,8 +10,9 @@ import { Router } from '@angular/router';
   templateUrl: './pokemon.component.html',
   styleUrls: ['./pokemon.component.css'],
 })
-export class PokemonComponent implements OnInit {
+export class PokemonComponent implements OnInit, OnDestroy {
   pokemons: any = [];
+  private sub: Subscription;
 
   constructor(
     private http: HttpClient,
@@ -22,41 +23,39 @@ export class PokemonComponent implements OnInit {
   ngOnInit(): void {
     this.loaderService.show();
     this.fetchPokemonNumber();
-    this.loaderService.hide();
-    //console.log(this.pokemons);
   }
 
   fetchPokemonNumber() {
-    this.http
+    this.sub = this.http
       .get(`https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0`)
       .pipe(
         map((responseData: any) => {
-          const responseCount = responseData.count;
-          return responseCount;
+          const responseResults = responseData.results;
+          return responseResults;
         })
       )
-      .subscribe((count) => {
-        for (let i = 1; i <= count; i++) {
-          this.http
-            .get(`https://pokeapi.co/api/v2/pokemon/${i}`)
-            .subscribe((pokemon: any) => {
-              const pokemonObj: object = {
-                id: pokemon.id,
-                name: pokemon.name,
-                img: pokemon.sprites.front_default,
-                weight: (pokemon.weight * 0.1).toFixed(2),
-                type: pokemon.types,
-              };
-              this.pokemons.push(pokemonObj);
-            });
-        }
-        // setTimeout(() => {
-        //   this.loaderService.hide();
-        // }, 700);
+      .subscribe((results) => {
+        results.forEach((resultItem: any) => {
+          this.http.get(resultItem.url).subscribe((pokemon: any) => {
+            const pokemonObj: object = {
+              id: pokemon.id,
+              name: pokemon.name,
+              img: pokemon.sprites.front_default, // kapoies den exoyn image
+              weight: (pokemon.weight * 0.1).toFixed(2),
+              type: pokemon.types,
+            };
+            this.pokemons.push(pokemonObj);
+          });
+        });
+        this.loaderService.hide();
       });
   }
 
   onPokemonSelect(pokemonName: string) {
     this.router.navigate(['/Pokemon/', pokemonName]);
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }

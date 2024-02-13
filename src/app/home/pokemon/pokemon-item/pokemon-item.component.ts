@@ -18,7 +18,7 @@ export class PokemonItemComponent implements OnInit {
       const name = params.get('name');
       if (name !== null) {
         this.pokemonName = name;
-        console.log('h');
+        console.log(name);
       } else {
       }
     });
