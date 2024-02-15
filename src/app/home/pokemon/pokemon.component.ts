@@ -22,10 +22,10 @@ export class PokemonComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.loaderService.show();
-    this.fetchPokemonNumber();
+    this.fetchPokemons();
   }
 
-  fetchPokemonNumber() {
+  fetchPokemons() {
     this.sub = this.http
       .get(`https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0`)
       .pipe(
@@ -42,7 +42,6 @@ export class PokemonComponent implements OnInit, OnDestroy {
               name: pokemon.name,
               img: pokemon.sprites.front_default, // kapoies den exoyn image
               weight: (pokemon.weight * 0.1).toFixed(2),
-              type: pokemon.types,
             };
             this.pokemons.push(pokemonObj);
           });

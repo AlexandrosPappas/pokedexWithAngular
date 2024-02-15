@@ -1,12 +1,18 @@
 <div class="pokemon-container">
     <div class="card">
         <div class="card-head">
-            <img src="" alt="pokemon ">
+            <img src="{{pokemonD.img}}" alt="pokemon ">
         </div>
         <div class="card-body">
-            <span>ID:</span>
-            <span>Name: </span>
-            <span>Weight:  Kg</span>
+            <span>ID: {{pokemonD.id}}</span>
+            <span>Name: {{pokemonName}} </span>
+            <span>Weight: {{pokemonD.weight}}  Kg</span>
+            <span>Type(s): {{pokemonD.type}}</span>
+            <div class="stats-container">
+                <span>Stats: </span>
+                <span *ngFor="let stat of pokemonD.stats">{{stat}} </span>
+                <span *ngFor="let baseStat of pokemonD.baseStat">{{baseStat}}</span>
+            </div>            
         </div>  
     </div>
 </div>
