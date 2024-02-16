@@ -9,8 +9,10 @@ interface PokemonData {
   img: string;
   weight: string;
   type: string;
-  stats: string[];
-  baseStat: string[];
+  stats: {
+    name: string;
+    baseStat: string;
+  }[];
 }
 
 @Component({
@@ -20,7 +22,7 @@ interface PokemonData {
 })
 export class PokemonItemComponent implements OnInit, OnDestroy {
   pokemonName: string;
-  pokemonD: PokemonData;
+  pokemonD: PokemonData | null = null;
   sub: Subscription;
 
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
@@ -35,7 +37,6 @@ export class PokemonItemComponent implements OnInit, OnDestroy {
       }
     });
     this.fetchPokemon();
-    console.log(this.pokemonD);
   }
 
   fetchPokemon() {
@@ -45,14 +46,15 @@ export class PokemonItemComponent implements OnInit, OnDestroy {
         const pokemonData: PokemonData = {
           id: pokemon.id,
           name: pokemon.name,
-          img: pokemon.sprites.front_default, // kapoies den exoyn image
+          img: pokemon.sprites.front_default || '/assets/questionmark.png', // kapoies den exoyn image
           weight: (pokemon.weight * 0.1).toFixed(2),
           type: pokemon.types.map((type: any) => type.type.name).join(', '),
-          stats: pokemon.stats.map((stat: any) => stat.stat.name),
-          baseStat: pokemon.stats.map((stat: any) => stat.base_stat),
+          stats: pokemon.stats.map((statItem: any) => ({
+            name: statItem.stat.name,
+            baseStat: statItem.base_stat,
+          })),
         };
         this.pokemonD = pokemonData;
-        console.log(this.pokemonD.stats);
       });
   }
 

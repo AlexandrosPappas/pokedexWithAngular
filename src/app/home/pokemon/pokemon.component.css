@@ -16,6 +16,9 @@
     text-align: center;
     border-bottom: 1px solid;   
 }
+.card-head img{
+    width: 96px;
+}
 .card-body{
     display: flex;
     flex-direction: column;

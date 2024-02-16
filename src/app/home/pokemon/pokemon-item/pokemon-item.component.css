@@ -1,4 +1,32 @@
+.pokemon-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 97.7px);
+}
+.card{
+    border: 1px solid;
+    border-radius: 15px;
+    width: -webkit-fill-available;  
+    width: -moz-available;
+    max-width: 500px;
+    cursor: pointer;
+}
+.card-head{
+    text-align: center;
+    border-bottom: 1px solid;   
+}
+.card-head img{
+    width: 150px;
+}
 .card-body{
     display: flex;
     flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+}
+.stats-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* outline: 1px solid; */
 }
