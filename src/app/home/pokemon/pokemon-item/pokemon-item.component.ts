@@ -13,6 +13,7 @@ interface PokemonData {
     name: string;
     baseStat: string;
   }[];
+  cry: string;
 }
 
 @Component({
@@ -46,13 +47,14 @@ export class PokemonItemComponent implements OnInit, OnDestroy {
         const pokemonData: PokemonData = {
           id: pokemon.id,
           name: pokemon.name,
-          img: pokemon.sprites.front_default || '/assets/questionmark.png', // kapoies den exoyn image
+          img: pokemon.sprites.front_default || '/assets/questionmark.png',
           weight: (pokemon.weight * 0.1).toFixed(2),
           type: pokemon.types.map((type: any) => type.type.name).join(', '),
           stats: pokemon.stats.map((statItem: any) => ({
             name: statItem.stat.name,
             baseStat: statItem.base_stat,
           })),
+          cry: pokemon.cries.latest,
         };
         this.pokemonD = pokemonData;
       });
