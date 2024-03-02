@@ -42,6 +42,7 @@ export class PokemonComponent implements OnInit, OnDestroy {
               name: pokemon.name,
               img: pokemon.sprites.front_default || '/assets/questionmark.png',
               weight: (pokemon.weight * 0.1).toFixed(2),
+              imageLoaded: false,
             };
             this.pokemons.push(pokemonObj);
           });
