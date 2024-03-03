@@ -2,6 +2,16 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    min-height: calc(100vh - 91.7px);
+    justify-content: center;
+    gap: 1.5rem;
+    min-height: calc(100vh - 92.2px - 4rem);
+    width: 75%;
+    margin: auto;
     margin-top: 4rem;
+}
+.intro{
+    text-align: center;
+}
+.angular-features {
+    text-align: center;
 }

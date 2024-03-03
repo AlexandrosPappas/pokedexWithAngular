@@ -3,7 +3,7 @@
         <div class="card-head">
             <div *ngIf="!pokemon.imageLoaded" class="loader"></div>
 
-            <img src="{{pokemon.img}}" (load)="pokemon.imageLoaded = true"  alt="pokemon {{pokemon.name}}" loading="lazy">
+            <img src="{{pokemon.img}}" (load)="pokemon.imageLoaded = true" alt="pokemon {{pokemon.name}}" loading="lazy">
         </div>
         <div class="card-body">
             <span>ID: {{ pokemon.id }}</span>
