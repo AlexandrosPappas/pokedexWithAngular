@@ -4,6 +4,7 @@ header{
     padding: 1rem 2rem;
     position: sticky;
     top: 0;
+    z-index: 1000;
 }
 .logo img{
     width: 150px;
@@ -20,7 +21,4 @@ nav a:link, nav a:visited{
 }
 nav a:hover{
     color: rgb(64, 64, 238);
-}
-main{
-    /* background-color: #a7b9d3; */
 }
