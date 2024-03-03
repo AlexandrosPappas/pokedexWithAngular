@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { LoaderService } from 'src/app/loader.service';
 
 interface PokemonData {
   id: number;
@@ -26,9 +27,14 @@ export class PokemonItemComponent implements OnInit, OnDestroy {
   pokemonD: PokemonData | null = null;
   sub: Subscription;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private loaderService: LoaderService
+  ) {}
 
   ngOnInit() {
+    this.loaderService.show();
     this.route.paramMap.subscribe((params) => {
       const name = params.get('name');
       if (name !== null) {
@@ -37,6 +43,7 @@ export class PokemonItemComponent implements OnInit, OnDestroy {
         console.log(`something went wrong!`);
       }
     });
+
     this.fetchPokemon();
   }
 
@@ -57,6 +64,7 @@ export class PokemonItemComponent implements OnInit, OnDestroy {
           cry: pokemon.cries.latest,
         };
         this.pokemonD = pokemonData;
+        this.loaderService.hide();
       });
   }
 

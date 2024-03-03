@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { NgOptimizedImage, TitleCasePipe } from '@angular/common';
-import { AfterContentInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription, count, map } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription, map } from 'rxjs';
 import { LoaderService } from 'src/app/loader.service';
 import { Router } from '@angular/router';
 

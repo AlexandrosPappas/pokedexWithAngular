@@ -18,3 +18,11 @@
 .angular-features {
     text-align: center;
 }
+.angular-features h1{
+    margin-bottom: 1rem;; 
+}
+@media(width < 450px){
+    .container h1{
+        text-align: center;
+    }
+}
